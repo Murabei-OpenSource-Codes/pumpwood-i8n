@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+src/pumpwood_i8n/__init__.py
+src/pumpwood_i8n/exceptions.py
+src/pumpwood_i8n/singletons.py
+src/pumpwood_i8n/translate.py
+src/pumpwood_i8n.egg-info/PKG-INFO
+src/pumpwood_i8n.egg-info/SOURCES.txt
+src/pumpwood_i8n.egg-info/dependency_links.txt
+src/pumpwood_i8n.egg-info/requires.txt
+src/pumpwood_i8n.egg-info/top_level.txt
