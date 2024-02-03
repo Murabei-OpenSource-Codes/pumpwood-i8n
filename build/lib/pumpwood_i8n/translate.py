@@ -145,7 +145,6 @@ class PumpwoodI8n:
             translation = self.translate__microservice(
                 sentence=sentence, tag=tag, plural=plural, language=language,
                 user_type=user_type)
-            print("translation:", translation)
         else:
             # Notify user if translation was atenpted, object was not
             # initializated.
