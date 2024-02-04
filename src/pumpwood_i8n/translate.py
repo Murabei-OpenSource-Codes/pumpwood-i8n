@@ -173,7 +173,7 @@ class PumpwoodI8n:
                     "sentence": sentence, "tag": tag, "plural": plural,
                     "language": language, "user_type": user_type,
                 })
-            return action_result["results"]
+            return action_result["result"]
 
         # IF not possible to translate sentence, return same value
         except Exception as e:
