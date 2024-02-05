@@ -115,6 +115,7 @@ class PumpwoodI8n:
         Return [str]:
             Translated sentence according to parameters.
         """
+        print("\n\nPumpwoodI8n:", sentence, tag, "\n\n")
         now_time = datetime.datetime.utcnow()
 
         #############################################################
