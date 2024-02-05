@@ -112,12 +112,14 @@ class PumpwoodI8n:
                 Modeling Unit might be a product or a costumer or other
                 unit. Using user_type it is possible to translate
                 DescriptionModelingUnit different to each user.
-        Return [str]:
-            Translated sentence according to parameters.
+        Return [str | None]:
+            Translated sentence according to parameters. If sentence is None
+            translation will always be None and will no call backend.
         """
-        print("\n\nPumpwoodI8n:", sentence, tag, "\n\n")
-        now_time = datetime.datetime.utcnow()
+        if sentence is None:
+            return None
 
+        now_time = datetime.datetime.utcnow()
         #############################################################
         # Get translation cache not to make too many calls on backend
         cache_key = self.CACHE_KEY_TEMPLATE.format(
