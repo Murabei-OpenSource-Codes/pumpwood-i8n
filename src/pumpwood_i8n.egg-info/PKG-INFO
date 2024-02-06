@@ -1,11 +1,12 @@
 Metadata-Version: 2.1
 Name: pumpwood-i8n
-Version: 0.1.4
+Version: 0.1.5
 Summary: Package for internationalization of Pumpwood Systems
 Home-page: https://github.com/Murabei-OpenSource-Codes/pumpwood-communication
 Author: André Andrade Baceti
 Author-email: a.baceti@murabei.com
 License: BSD-3-Clause License
+Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.6
@@ -99,3 +100,5 @@ is possible to set PUMPOOD__I8N__CACHE_EXPIRY with float values.
 **PUMPOOD__I8N__CACHE_EXPIRY [float]:** Set the expiry time for locally
   cached values for translation. After the period sentence will be translated
   again renewing the local cache.
+
+

@@ -31,7 +31,7 @@ class PumpwoodI8n:
     # Time in hours until invalidate translation cache
     _cache_expiry: float = None
 
-    def __init__(self, microservice: object = None):
+    def __init__(self, microservice: object = None, tag: str = None):
         """
         __init__.
 
@@ -49,9 +49,9 @@ class PumpwoodI8n:
             cache_expiry [float]: Time (hours) to expire class cache for
                 translation calls.
         """
-        self.init(microservice=microservice)
+        self.init(microservice=microservice, tag=tag)
 
-    def init(self, microservice: object = None):
+    def init(self, microservice: object = None, tag: str = None):
         """
         Init model.
 
@@ -68,11 +68,15 @@ class PumpwoodI8n:
                 will use API to retrieve translation.
             cache_expiry [float]: Time (hours) to expire class cache for
                 translation calls.
+            tag [str]: Set a default tag to translations.
         """
         # Lazy load PumpwoodI8nTranslation
         self._microservice = microservice
         self._cache_expiry = float(os.getenv(
             "PUMPOOD__I8N__CACHE_EXPIRY", "1"))
+
+        # Set default tag
+        self._tag = tag
 
         # Check if object was not initializated corretly
         is_none__i8n_model = self._i8n_model is None
@@ -118,6 +122,9 @@ class PumpwoodI8n:
         """
         if sentence is None:
             return None
+
+        # Set a default tag
+        tag = tag or self._tag
 
         now_time = datetime.datetime.utcnow()
         #############################################################
