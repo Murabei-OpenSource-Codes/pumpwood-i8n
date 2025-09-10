@@ -30,6 +30,7 @@ setuptools.setup(
     install_requires=[
         "requests",
         "simplejson",
+        "loguru>=0.7.3"
     ],
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",

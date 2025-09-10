@@ -13,7 +13,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setuptools.setup(
     name='pumpwood-i8n',
-    version='0.2.1',
+    version='1.0.0',
     include_package_data=True,
     license='BSD-3-Clause License',
     description='Package for internationalization of Pumpwood Systems',
@@ -30,6 +30,7 @@ setuptools.setup(
     install_requires=[
         "requests",
         "simplejson",
+        "loguru>=0.7.3"
     ],
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
