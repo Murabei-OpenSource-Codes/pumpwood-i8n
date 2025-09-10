@@ -1,4 +1,5 @@
 """Internationalization for Pumpwood."""
+import os
 import warnings
 from loguru import logger
 from pumpwood_i8n.exceptions import PumpwoodI8nException
@@ -19,7 +20,7 @@ class PumpwoodI8n:
     _microservice: object = None
 
     def __init__(self, microservice: object = None, tag: str = None,
-                 pumpwood_cache: object = None):
+                 pumpwood_cache: object = None, cache_expire: int = None):
         """__init__.
 
         Class can be loaded later using init method.
@@ -36,7 +37,20 @@ class PumpwoodI8n:
             pumpwood_cache (object):
                 A pumpwood cache object that can be used to store
                 translation.
+            cache_expire (int):
+                Seconds to invalidate cache for transalation, if not set it
+                will be retrieved from `PUMPWOOD_I8N__CACHE_EXPIRE` env
+                variable (default 3600 seconds, 1h).
         """
+        self._microservice = None
+        """Microservice object to comunicate with backend."""
+        self._pumpwood_cache = None
+        """Pumpwood cache object."""
+        self._tag = None
+        """Default tag for translation."""
+        self._cache_expire = int(
+            os.getenv('PUMPWOOD_I8N__CACHE_EXPIRE', '3600'))
+        """Store the time that will be considered to expire the cache."""
         self.init(
             microservice=microservice, tag=tag,
             pumpwood_cache=pumpwood_cache)
@@ -152,7 +166,8 @@ class PumpwoodI8n:
         # Set cache if avaliable
         if self._pumpwood_cache is not None:
             self._pumpwood_cache.set(
-                hash_dict=hash_dict, value=translation)
+                hash_dict=hash_dict, value=translation,
+                expire=self._cache_expire)
         return translation
 
     def translate__microservice(self, sentence: str, tag: str = "",
