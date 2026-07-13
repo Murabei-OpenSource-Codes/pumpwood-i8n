@@ -1,6 +1,6 @@
 [project]
 name = "pumpwood-i8n"
-version = "1.0.5"
+version = "1.0.6"
 description = "Package for internationalization of Pumpwood Systems"
 readme = "README.md"
 requires-python = ">=3.6,<4.0"
