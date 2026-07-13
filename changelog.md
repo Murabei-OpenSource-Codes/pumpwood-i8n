@@ -5,17 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Local translation backend via ``i8n_model`` parameter or
+  ``PUMPWOOD_I8N__I8N_MODEL`` environment variable.
+- ``PumpwoodI8nTranslationCache`` dataclass for cache key generation.
+- ``config`` module for environment variable helpers.
+- ``aux`` module for lazy import of the local i8n model.
+- ``translate_local`` backend method.
+- ``load_i8n_model`` to validate and lazy-load the local model.
+- ``app_ready_check`` callback to defer local translation until the
+  host application is ready.
+
+### Changed
+- Rename ``translate__microservice`` to ``translate_microservice``.
+- Read cache expiration from ``PUMPWOOD_AUTH__I8N_CACHE_EXPIRATION``
+  (seconds, default ``300``).
+- ``t`` returns ``None`` when ``sentence`` is ``None`` without calling
+  the backend.
+- Replace ``warnings`` with ``loguru`` logger for backend failures.
+
+### Removed
+- ``cache_expire`` constructor argument and ``PUMPWOOD_I8N__CACHE_EXPIRE``
+  environment variable.
+
 ## [1.0.2] - 2025-09-09
 
 ### Added
-- Set cache expire time using enviroment variable `PUMPOOD__I8N__CACHE_EXPIRY`
-  or argument at object creation. Default as `3600`.
+- Set cache expire time using environment variable
+  ``PUMPWOOD_AUTH__I8N_CACHE_EXPIRATION``. Default is ``300`` seconds.
 
 ### Changed
 - Refactor codes.
 
 ### Removed
-- No removes
+- No removes.
 
 ## [1.0.1] - 2025-09-09
 
@@ -26,4 +51,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor codes.
 
 ### Removed
-- No removes
+- No removes.
