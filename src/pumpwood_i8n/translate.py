@@ -31,7 +31,7 @@ Local backend::
 from typing import Callable
 from loguru import logger
 from dataclasses import dataclass
-from pumpwood_communication.types import PumpwoodDataclassMixin
+from pumpwood_communication.type import PumpwoodDataclassMixin
 from pumpwood_i8n.exceptions import PumpwoodI8nException
 from pumpwood_i8n.aux import _import_function_by_string
 from pumpwood_i8n.config import (
